@@ -10,9 +10,10 @@ body {
   color: white;
   padding: 20px;
 
+  /* Updated: weightlifting + dumbbell racks style background */
   background: 
-    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
-    url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b');
+    linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95)),
+    url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438');
 
   background-size: cover;
   background-position: center;
@@ -41,7 +42,7 @@ select {
 }
 
 .task {
-  background: rgba(30, 41, 59, 0.8);
+  background: rgba(30, 41, 59, 0.75);
   backdrop-filter: blur(6px);
   padding: 12px 20px;
   margin: 10px 0;
@@ -62,20 +63,24 @@ button {
   border-radius: 6px;
   cursor: pointer;
   min-width: 110px;
+  font-weight: bold;
 }
 
+/* Updated button colors */
 .done {
-  background: #22c55e;
+  background: #facc15; /* yellow */
+  color: black;
 }
 
 .completed {
-  background: #64748b;
+  background: #22c55e; /* green */
+  color: white;
 }
 </style>
 </head>
 <body>
 
-<h1>2 Month Fitness + Career Tracker</h1>
+<h1>Fitness + Career Tracker</h1>
 
 <div class="controls">
   <label>Select Day: </label>
@@ -90,11 +95,11 @@ const tasks = [
 "5:00 AM - Treadmill (30 min Incline)",
 "5:45 AM - Breakfast (Chickpeas + 2 Eggs + Moringa)",
 "7:00 AM - Push-ups (3x10) + Pull-ups (3x5)",
-"8:00 AM - Crunches (3x15) + Plank (2x45s)",
+"8:00 AM - Core (Crunches 3x15 + Plank 2x45s)",
 "9:00 AM - Push-ups (3x10) + Pull-ups (3x5)",
-"10:00 AM - Crunches (3x15) + Plank (2x45s)",
+"10:00 AM - Core (Crunches 3x15 + Plank 2x45s)",
 "11:00 AM - Push-ups (3x10) + Pull-ups (3x5)",
-"12:00 PM - Crunches (3x15) + Plank (2x45s)",
+"12:00 PM - Core (Crunches 3x15 + Plank 2x45s)",
 "1:00 PM - Lunch (2 Eggs + Soya + Curd)",
 "1:45 PM - Ginger + Saunf Drink",
 "2:00 PM - Study (15 min)",
@@ -110,7 +115,6 @@ const tasks = [
 const container = document.getElementById("container");
 const selector = document.getElementById("daySelector");
 
-// Populate dropdown
 for (let i = 1; i <= 60; i++) {
   const option = document.createElement("option");
   option.value = i;
@@ -157,7 +161,6 @@ selector.addEventListener("change", (e) => {
   renderDay(e.target.value);
 });
 
-// Initial load
 renderDay(1);
 </script>
 
