@@ -7,34 +7,61 @@
 <style>
 body {
   font-family: Arial;
-  background: #0f172a;
   color: white;
   padding: 20px;
+
+  background: 
+    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
+    url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b');
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 h1 {
   text-align: center;
-}
-
-.day {
   margin-bottom: 20px;
 }
 
+.controls {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+.day {
+  max-width: 700px;
+  margin: auto;
+}
+
 .task {
-  background: #1e293b;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 8px;
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(6px);
+  padding: 12px 20px;
+  margin: 10px 0;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.task span {
+  flex: 1;
+  margin-right: 20px;
+}
+
 button {
-  padding: 5px 10px;
+  padding: 6px 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
+  min-width: 110px;
 }
 
 .done {
@@ -49,6 +76,11 @@ button {
 <body>
 
 <h1>2 Month Fitness + Career Tracker</h1>
+
+<div class="controls">
+  <label>Select Day: </label>
+  <select id="daySelector"></select>
+</div>
 
 <div id="container"></div>
 
@@ -76,15 +108,28 @@ const tasks = [
 ];
 
 const container = document.getElementById("container");
+const selector = document.getElementById("daySelector");
 
-for (let d = 1; d <= 60; d++) {
+// Populate dropdown
+for (let i = 1; i <= 60; i++) {
+  const option = document.createElement("option");
+  option.value = i;
+  option.textContent = `Day ${i}`;
+  selector.appendChild(option);
+}
+
+function renderDay(day) {
+  container.innerHTML = "";
+
   const dayDiv = document.createElement("div");
   dayDiv.className = "day";
-  dayDiv.innerHTML = `<h2>Day ${d}</h2>`;
 
-  tasks.forEach((taskText, i) => {
+  tasks.forEach((taskText) => {
     const task = document.createElement("div");
     task.className = "task";
+
+    const span = document.createElement("span");
+    span.textContent = taskText;
 
     const btn = document.createElement("button");
     btn.innerText = "Mark Done";
@@ -100,13 +145,20 @@ for (let d = 1; d <= 60; d++) {
       }
     };
 
-    task.innerHTML = `<span>${taskText}</span>`;
+    task.appendChild(span);
     task.appendChild(btn);
     dayDiv.appendChild(task);
   });
 
   container.appendChild(dayDiv);
 }
+
+selector.addEventListener("change", (e) => {
+  renderDay(e.target.value);
+});
+
+// Initial load
+renderDay(1);
 </script>
 
 </body>
