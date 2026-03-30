@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2 Month Tracker</title>
+<style>
+body {
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.day {
+  margin-bottom: 20px;
+}
+
+.task {
+  background: #1e293b;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.done {
+  background: #22c55e;
+}
+
+.completed {
+  background: #64748b;
+}
+</style>
+</head>
+<body>
+
+<h1>2 Month Fitness + Career Tracker</h1>
+
+<div id="container"></div>
+
+<script>
+const tasks = [
+"4:30 AM - Black Coffee + Cardamom",
+"5:00 AM - Treadmill (30 min Incline)",
+"5:45 AM - Breakfast (Chickpeas + 2 Eggs + Moringa)",
+"7:00 AM - Push-ups (3x10) + Pull-ups (3x5)",
+"8:00 AM - Crunches (3x15) + Plank (2x45s)",
+"9:00 AM - Push-ups (3x10) + Pull-ups (3x5)",
+"10:00 AM - Crunches (3x15) + Plank (2x45s)",
+"11:00 AM - Push-ups (3x10) + Pull-ups (3x5)",
+"12:00 PM - Crunches (3x15) + Plank (2x45s)",
+"1:00 PM - Lunch (2 Eggs + Soya + Curd)",
+"1:45 PM - Ginger + Saunf Drink",
+"2:00 PM - Study (15 min)",
+"3:00 PM - Study (15 min)",
+"4:00 PM - Study (15 min)",
+"5:00 PM - Study (15 min)",
+"6:00 PM - Study (15 min)",
+"7:00 PM - Ginger + Saunf Drink",
+"8:00 PM - Dinner (2 Eggs + Dal)",
+"9:00 PM - Sleep"
+];
+
+const container = document.getElementById("container");
+
+for (let d = 1; d <= 60; d++) {
+  const dayDiv = document.createElement("div");
+  dayDiv.className = "day";
+  dayDiv.innerHTML = `<h2>Day ${d}</h2>`;
+
+  tasks.forEach((taskText, i) => {
+    const task = document.createElement("div");
+    task.className = "task";
+
+    const btn = document.createElement("button");
+    btn.innerText = "Mark Done";
+    btn.className = "done";
+
+    btn.onclick = () => {
+      if (btn.innerText === "Mark Done") {
+        btn.innerText = "Completed";
+        btn.className = "completed";
+      } else {
+        btn.innerText = "Mark Done";
+        btn.className = "done";
+      }
+    };
+
+    task.innerHTML = `<span>${taskText}</span>`;
+    task.appendChild(btn);
+    dayDiv.appendChild(task);
+  });
+
+  container.appendChild(dayDiv);
+}
+</script>
+
+</body>
+</html>
