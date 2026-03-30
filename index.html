@@ -3,17 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2 Month Tracker</title>
+<title>2 Month Fitness + Career Tracker</title>
+
 <style>
+/* ====== GLOBAL ====== */
 body {
-  font-family: Arial;
-  color: white;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #e5e7eb;
+  margin: 0;
   padding: 20px;
 
-  /* Updated: weightlifting + dumbbell racks style background */
   background: 
-    linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95)),
-    url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438');
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.95)),
+    url('https://images.unsplash.com/photo-1599058917212-d750089bc07e');
 
   background-size: cover;
   background-position: center;
@@ -22,68 +24,105 @@ body {
 
 h1 {
   text-align: center;
-  margin-bottom: 20px;
+  font-size: 32px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
+/* ====== DROPDOWN ====== */
 .controls {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 select {
-  padding: 8px;
-  border-radius: 6px;
+  padding: 10px 14px;
+  border-radius: 8px;
   border: none;
+  font-size: 14px;
+  background: rgba(255,255,255,0.9);
 }
 
+/* ====== CARD CONTAINER ====== */
 .day {
-  max-width: 700px;
+  max-width: 720px;
   margin: auto;
 }
 
+/* ====== TASK CARD ====== */
 .task {
-  background: rgba(30, 41, 59, 0.75);
-  backdrop-filter: blur(6px);
-  padding: 12px 20px;
-  margin: 10px 0;
-  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  padding: 14px 20px;
+  margin: 12px 0;
+  border-radius: 14px;
+
+  background: rgba(30, 41, 59, 0.55);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 
+    0 8px 20px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+
+  transition: all 0.25s ease;
+}
+
+.task:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.8);
 }
 
 .task span {
   flex: 1;
   margin-right: 20px;
+  line-height: 1.4;
 }
 
+/* ====== BUTTONS ====== */
 button {
-  padding: 6px 12px;
+  padding: 8px 14px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   min-width: 110px;
-  font-weight: bold;
+  font-weight: 600;
+
+  transition: all 0.2s ease;
 }
 
-/* Updated button colors */
 .done {
-  background: #facc15; /* yellow */
+  background: linear-gradient(135deg, #facc15, #eab308);
   color: black;
+  box-shadow: 0 4px 12px rgba(250,204,21,0.4);
+}
+
+.done:hover {
+  transform: scale(1.05);
 }
 
 .completed {
-  background: #22c55e; /* green */
+  background: linear-gradient(135deg, #22c55e, #16a34a);
   color: white;
+  box-shadow: 0 4px 12px rgba(34,197,94,0.5);
 }
+
+.completed:hover {
+  transform: scale(1.05);
+}
+
 </style>
 </head>
+
 <body>
 
-<h1>Fitness + Career Tracker</h1>
+<h1>🔥 2 Month Fitness Tracker</h1>
 
 <div class="controls">
-  <label>Select Day: </label>
   <select id="daySelector"></select>
 </div>
 
@@ -93,22 +132,23 @@ button {
 const tasks = [
 "4:30 AM - Black Coffee + Cardamom",
 "5:00 AM - Treadmill (30 min Incline)",
-"5:45 AM - Breakfast (Chickpeas + 2 Eggs + Moringa)",
+"5:45 AM - Bath + Cooking (Breakfast= Chickpeas + 2 Egg omlette + Moringa) and (Lunch 2 Egg omlette + Soya) ,
+"6:30 AM - Breakfast (Chickpeas + 2 Eggs + Moringa)",  
 "7:00 AM - Push-ups (3x10) + Pull-ups (3x5)",
-"8:00 AM - Core (Crunches 3x15 + Plank 2x45s)",
-"9:00 AM - Push-ups (3x10) + Pull-ups (3x5)",
-"10:00 AM - Core (Crunches 3x15 + Plank 2x45s)",
-"11:00 AM - Push-ups (3x10) + Pull-ups (3x5)",
-"12:00 PM - Core (Crunches 3x15 + Plank 2x45s)",
-"1:00 PM - Lunch (2 Eggs + Soya + Curd)",
+"8:00 AM - Core (Crunches 3x15 + Plank 2x45s)+ Work (45 Min)",
+"9:00 AM - Push-ups (3x10) + Pull-ups (3x5) + Work (45 Min)",
+"10:00 AM - Core (Crunches 3x15 + Plank 2x45s) + Work (45 Min)",
+"11:00 AM - Push-ups (3x10) + Pull-ups (3x5) + Work (45 Min)",
+"12:00 PM - Core (Crunches 3x15 + Plank 2x45s) + Work (45 Min)",
+"1:00 PM - Lunch (2 Eggs + Soya + Curd) + Work (45 Min)",
 "1:45 PM - Ginger + Saunf Drink",
-"2:00 PM - Study (15 min)",
-"3:00 PM - Study (15 min)",
-"4:00 PM - Study (15 min)",
-"5:00 PM - Study (15 min)",
-"6:00 PM - Study (15 min)",
-"7:00 PM - Ginger + Saunf Drink",
-"8:00 PM - Dinner (2 Eggs + Dal)",
+"2:00 PM - Study (15 min) + Work (45 Min)",
+"3:00 PM - Study (15 min) + Work (45 Min)",
+"4:00 PM - Study (15 min) + Work (45 Min)",
+"5:00 PM - Study (15 min) + Work (45 Min)",
+"6:00 PM - Study (15 min) + Work (45 Min)",
+"7:00 PM - Ginger + Saunf Drink + cooking + plates",
+"8:00 PM - Dinner (2 Egg omlette + Dal) + Reading",
 "9:00 PM - Sleep"
 ];
 
@@ -122,7 +162,7 @@ for (let i = 1; i <= 60; i++) {
   selector.appendChild(option);
 }
 
-function renderDay(day) {
+function renderDay() {
   container.innerHTML = "";
 
   const dayDiv = document.createElement("div");
@@ -157,11 +197,9 @@ function renderDay(day) {
   container.appendChild(dayDiv);
 }
 
-selector.addEventListener("change", (e) => {
-  renderDay(e.target.value);
-});
+selector.addEventListener("change", renderDay);
 
-renderDay(1);
+renderDay();
 </script>
 
 </body>
