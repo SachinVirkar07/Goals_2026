@@ -3,124 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2 Month Fitness + Career Tracker</title>
+<title>Ultimate Fitness Tracker</title>
 
 <style>
-/* ====== GLOBAL ====== */
 body {
-  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   color: #e5e7eb;
   margin: 0;
   padding: 20px;
 
-  background: 
-    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.95)),
-    url('https://images.unsplash.com/photo-1599058917212-d750089bc07e');
-
+  background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.95)),
+  url('https://images.unsplash.com/photo-1599058917212-d750089bc07e');
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
 }
 
 h1 {
   text-align: center;
-  font-size: 32px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  margin-bottom: 20px;
 }
 
-/* ====== DROPDOWN ====== */
 .controls {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 select {
-  padding: 10px 14px;
+  padding: 10px;
   border-radius: 8px;
-  border: none;
-  font-size: 14px;
-  background: rgba(255,255,255,0.9);
 }
 
-/* ====== CARD CONTAINER ====== */
 .day {
-  max-width: 720px;
+  max-width: 750px;
   margin: auto;
 }
 
-/* ====== TASK CARD ====== */
 .task {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
-  padding: 14px 20px;
-  margin: 12px 0;
-  border-radius: 14px;
-
-  background: rgba(30, 41, 59, 0.55);
-  backdrop-filter: blur(10px);
-
-  border: 1px solid rgba(255,255,255,0.08);
-
-  box-shadow: 
-    0 8px 20px rgba(0,0,0,0.6),
-    inset 0 1px 0 rgba(255,255,255,0.05);
-
-  transition: all 0.25s ease;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 12px;
+  background: rgba(30,41,59,0.6);
 }
 
-.task:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.8);
-}
-
-.task span {
-  flex: 1;
-  margin-right: 20px;
-  line-height: 1.4;
-}
-
-/* ====== BUTTONS ====== */
 button {
-  padding: 8px 14px;
-  border: none;
+  padding: 8px 12px;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
-  min-width: 110px;
-  font-weight: 600;
-
-  transition: all 0.2s ease;
 }
 
 .done {
-  background: linear-gradient(135deg, #facc15, #eab308);
-  color: black;
-  box-shadow: 0 4px 12px rgba(250,204,21,0.4);
-}
-
-.done:hover {
-  transform: scale(1.05);
+  background: gold;
 }
 
 .completed {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: limegreen;
   color: white;
-  box-shadow: 0 4px 12px rgba(34,197,94,0.5);
 }
-
-.completed:hover {
-  transform: scale(1.05);
-}
-
 </style>
 </head>
 
 <body>
 
-<h1>🔥 2 Month Fitness & Career Tracker</h1>
+<h1>🔥 Daily Discipline Tracker</h1>
 
 <div class="controls">
   <select id="daySelector"></select>
@@ -129,39 +75,66 @@ button {
 <div id="container"></div>
 
 <script>
+
 const tasks = [
-"4:30 AM - Black Coffee + Cardamom",
-"5:00 AM - Treadmill (30 min Incline)",
-"5:45 AM - Bath + Cooking (Breakfast= Chickpeas + 2 Egg omlette + Moringa) and (Lunch 2 Egg omlette + Soya)",
-"6:30 AM - Breakfast (Chickpeas + 2 Eggs + Moringa)",  
-"7:00 AM - Push-ups (3x10) + Pull-ups (3x5) + Apply for Jobs",
-"8:00 AM - Core (Crunches 3x15 + Plank 2x45s)+ Work (45 Min)",
-"8:30 AM - Green Tea 🍵",
-"9:00 AM - Push-ups (3x10) + Pull-ups (3x5) + Work (45 Min)",
-"10:00 AM - Core (Crunches 3x15 + Plank 2x45s) + Work (45 Min)",
-"10:30 PM - Green Tea 🍵",
-"11:00 AM - Push-ups (3x10) + Pull-ups (3x5) + Work (45 Min)",
-"12:00 PM - Core (Crunches 3x15 + Plank 2x45s) + Work (45 Min)",
-"1:00 PM - Lunch (2 Eggs + Soya + Curd) + Work (45 Min)",
-"1:45 PM - Ginger + Saunf Drink",
-"2:00 PM - Study (15 min) + Work (45 Min)",
-"2:30 PM - Green Tea 🍵",
-"3:00 PM - Study (15 min) + Work (45 Min)",
-"4:00 PM - Study (15 min) + Work (45 Min)",
-"5:00 PM - Study (15 min) + Work (45 Min)",
-"6:00 PM - Study (15 min) + Work (45 Min)",
-"7:00 PM - Ginger + Saunf Drink + cooking + plates",
-"8:00 PM - Dinner (2 Egg omlette + Dal) + Reading",
-"9:00 PM - Sleep"
+
+"4:00 AM → Cardamom Black Coffee ☕",
+"4:30 AM → Shilajit (1 Tablet)",
+
+// WORKOUT
+"4:50 – 5:20 AM → Strength Training + 750ml Water (Salt + Lemon)",
+
+"Workout Set 1 → Push-ups 12 | Pull-ups 5 | Crunches 12 | Plank 45s | Hanging Knee Raise 5",
+"Workout Set 2 → Push-ups 12 | Pull-ups 5 | Crunches 12 | Plank 45s | Hanging Knee Raise 5",
+"Workout Set 3 → Push-ups 12 | Pull-ups MAX | Leg Raises 12 | Plank 45s | Hanging Knee Raise",
+
+// TREADMILL
+"5:20 – 5:50 AM → Treadmill (Incline Walk)",
+"• 5 min incline 5 speed 3",
+"• 20 min incline 10 speed 3.5",
+"• 5 min incline 5 speed 3",
+
+// SPECIAL DAYS
+"Sunday/Thursday Upgrade → Incline 14 + Jog 5 min speed 8",
+
+// MORNING ROUTINE
+"6:00 – 7:00 AM → Bath 🚿",
+"7:00 AM → Breakfast 🍳 (Eggs + Chickpeas + Soya + Moringa)",
+
+// WORK BLOCK
+"8:00 – 11:00 AM → Work + Meeting",
+"11:00 AM → Green Tea 🍵",
+"11:30 – 11:50 AM → Walk + YouTube Mock Interview",
+
+// MIDDAY
+"12:30 PM → Apple Cider Vinegar",
+"12:45 PM → Lunch 🍽️ (Soya + Roti + Sabji + Curd)",
+
+"2:15 PM → Green Tea 🍵",
+"2:30 – 2:50 PM → Walk + Mock Interview",
+
+"3:30 PM → Lemon + Jeera + Ginger Water",
+
+// EVENING
+"4:00 PM → Snacks (Chickpeas + Soya + Moringa)",
+"5:00 – 5:20 PM → Walk Outdoor",
+
+// NIGHT
+"7:00 PM → Lemon + Jeera + Ginger Water",
+"7:30 PM → Dinner 🍽️ (Eggs + Dal + Sabji + Curd + Salad)",
+"8:00 PM → 10 min Walk",
+
+"8:30 PM → Sleep 😴 (No Phone)"
 ];
 
 const container = document.getElementById("container");
 const selector = document.getElementById("daySelector");
 
+// Create 60 days
 for (let i = 1; i <= 60; i++) {
   const option = document.createElement("option");
   option.value = i;
-  option.textContent = `Day ${i}`;
+  option.textContent = "Day " + i;
   selector.appendChild(option);
 }
 
@@ -171,7 +144,7 @@ function renderDay() {
   const dayDiv = document.createElement("div");
   dayDiv.className = "day";
 
-  tasks.forEach((taskText) => {
+  tasks.forEach(taskText => {
     const task = document.createElement("div");
     task.className = "task";
 
@@ -203,6 +176,7 @@ function renderDay() {
 selector.addEventListener("change", renderDay);
 
 renderDay();
+
 </script>
 
 </body>
